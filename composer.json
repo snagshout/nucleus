@@ -10,7 +10,6 @@
   ],
   "require": {
     "php": ">=7.3",
-    "lstrojny/phpunit-function-mocker": "^1.1",
     "ext-openssl": "*",
     "ext-mbstring": "*",
     "ext-json": "*"
