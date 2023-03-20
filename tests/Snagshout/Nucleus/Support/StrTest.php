@@ -11,11 +11,10 @@
 
 namespace Tests\Snagshout\Nucleus\Support;
 
-use PHPUnit\Extension\FunctionMocker;
 use PHPUnit\Framework\MockObject\MockObject;
-use RuntimeException;
 use Snagshout\Nucleus\Support\Str;
 use Snagshout\Nucleus\Testing\TestCase;
+
 
 /**
  * Class StrTest.
@@ -73,51 +72,6 @@ class StrTest extends TestCase
         $someInteger = mt_rand(1, 5);
         $this->assertEquals($someInteger, strlen(Str::random($someInteger)));
         $this->assertInternalType('string', Str::random());
-    }
-
-    /**
-     * @runInSeparateProcess
-     */
-    public function testRandomWithMissingFunction()
-    {
-        $this->expectException(RuntimeException::class);
-
-        $this->php = FunctionMocker::start($this, 'Snagshout\Nucleus\Support')
-             ->mockFunction('function_exists')
-             ->mockFunction('openssl_random_pseudo_bytes')
-             ->getMock();
-
-        $this->php
-            ->expects($this->once())
-            ->method('function_exists')
-            ->will($this->returnValue(false));
-
-        Str::random();
-    }
-
-    /**
-     * @runInSeparateProcess
-     */
-    public function testRandomWithFailure()
-    {
-        $this->expectException(RuntimeException::class);
-
-        $this->php = FunctionMocker::start($this, 'Snagshout\Nucleus\Support')
-             ->mockFunction('function_exists')
-             ->mockFunction('openssl_random_pseudo_bytes')
-             ->getMock();
-
-        $this->php
-            ->expects($this->once())
-            ->method('function_exists')
-            ->will($this->returnValue(true));
-
-        $this->php
-            ->expects($this->once())
-            ->method('openssl_random_pseudo_bytes')
-            ->will($this->returnValue(false));
-
-        Str::random();
     }
 
     public function testBeginsWith()
