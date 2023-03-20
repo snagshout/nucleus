@@ -1,5 +1,5 @@
 {
-  "name": "sellerlabs/nucleus",
+  "name": "snagshout/nucleus",
   "description": "Some core PHP utilities",
   "license": "MIT",
   "authors": [
@@ -8,27 +8,31 @@
       "email": "ed@sellerlabs.com"
     }
   ],
+  "require": {
+    "php": ">=7.3",
+    "lstrojny/phpunit-function-mocker": "^1.1",
+    "ext-openssl": "*",
+    "ext-mbstring": "*",
+    "ext-json": "*"
+  },
   "require-dev": {
-    "phpunit/phpunit": "*",
-    "mockery/mockery": "0.9.*",
-    "phpbench/phpbench": "0.10.0"
+    "phpunit/phpunit": "^9.0",
+    "mockery/mockery": "^1.5",
+    "phpbench/phpbench": "^1.2",
+    "ext-http": "*"
   },
   "autoload": {
     "psr-4": {
-      "SellerLabs\\Nucleus\\": "src/SellerLabs/Nucleus"
+      "Snagshout\\Nucleus\\": "src/Snagshout/Nucleus"
     },
     "files": [
-      "src/SellerLabs/Nucleus/Support/intl.php"
+      "src/Snagshout/Nucleus/Support/intl.php"
     ]
   },
   "autoload-dev": {
     "psr-4": {
-      "Tests\\SellerLabs\\Nucleus\\": "tests/SellerLabs/Nucleus",
-      "Benchmarks\\SellerLabs\\Nucleus\\": "benchmarks/SellerLabs/Nucleus",
-      "Benchmarks\\SellerLabs\\Sanity\\": "benchmarks/SellerLabs/Sanity"
+      "Tests\\Snagshout\\Nucleus\\": "tests/Snagshout/Nucleus",
+      "Benchmarks\\Snagshout\\Nucleus\\": "benchmarks/Snagshout/Nucleus"
     }
-  },
-  "require": {
-    "lstrojny/phpunit-function-mocker": "0.4.*"
   }
 }
